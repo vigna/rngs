@@ -38,7 +38,8 @@ const BASE: [u64; 3] = [0, MWC_A2, 0];
 /// lattice structure, which the scrambler X hides.
 ///
 /// The algorithm used here is translated from [the `MWC192X.c` reference
-/// source code](https://prng.di.unimi.it/MWC192X.c) by Sebastiano Vigna.
+/// source code](https://github.com/vigna/MWCPRNG/blob/main/prngs/MWC192X.c)
+/// by Sebastiano Vigna.
 #[derive(Debug, Clone, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Mwc192X {
@@ -187,7 +188,7 @@ mod tests {
     fn reference() {
         let mut rng = Mwc192X::from_seed(SEED);
         // These values were produced with the reference implementation:
-        // https://prng.di.unimi.it/MWC192X.c
+        // https://github.com/vigna/MWCPRNG/blob/main/prngs/MWC192X.c
         let expected = [
             0xfedcba9876543211,
             0xac8dcd6abd635774,
@@ -209,7 +210,7 @@ mod tests {
     #[cfg_attr(miri, ignore)] // Miri is too slow
     fn reference_jumps() {
         // These values were produced with the reference implementation:
-        // https://prng.di.unimi.it/MWC192X.c
+        // https://github.com/vigna/MWCPRNG/blob/main/prngs/MWC192X.c
         let jumped = |f: fn(&mut Mwc192X)| {
             let mut rng = Mwc192X::from_seed(SEED);
             f(&mut rng);
@@ -250,7 +251,7 @@ mod tests {
             }
         );
         // These values were produced with the reference implementation:
-        // https://prng.di.unimi.it/MWC192X.c
+        // https://github.com/vigna/MWCPRNG/blob/main/prngs/MWC192X.c
         let expected = [
             0x28efe333b266f102,
             0x07573657c1a55847,

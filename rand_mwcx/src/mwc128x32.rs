@@ -37,7 +37,8 @@ const BASE: [u64; 2] = [0, MWC_A3 as u64];
 /// lattice structure, which the scrambler X hides.
 ///
 /// The algorithm used here is translated from [the `MWC128X_32.c` reference
-/// source code](https://prng.di.unimi.it/MWC128X_32.c) by Sebastiano Vigna.
+/// source code](https://github.com/vigna/MWCPRNG/blob/main/prngs/MWC128X_32.c)
+/// by Sebastiano Vigna.
 #[derive(Debug, Clone, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Mwc128X32 {
@@ -207,7 +208,7 @@ mod tests {
     fn reference() {
         let mut rng = Mwc128X32::from_seed(SEED);
         // These values were produced with the reference implementation:
-        // https://prng.di.unimi.it/MWC128X_32.c
+        // https://github.com/vigna/MWCPRNG/blob/main/prngs/MWC128X_32.c
         let expected = [
             0x4b5a6979, 0x6792c5cf, 0xedfc7024, 0x50a57a05, 0x329b3e06, 0x1f1db247, 0x4c7e40d2,
             0x3cbaba78, 0x687c6b34, 0xe8c71e6d,
@@ -221,7 +222,7 @@ mod tests {
     #[cfg_attr(miri, ignore)] // Miri is too slow
     fn reference_jumps() {
         // These values were produced with the reference implementation:
-        // https://prng.di.unimi.it/MWC128X_32.c
+        // https://github.com/vigna/MWCPRNG/blob/main/prngs/MWC128X_32.c
         let jumped = |f: fn(&mut Mwc128X32)| {
             let mut rng = Mwc128X32::from_seed(SEED);
             f(&mut rng);
@@ -263,7 +264,7 @@ mod tests {
             }
         );
         // These values were produced with the reference implementation:
-        // https://prng.di.unimi.it/MWC128X_32.c
+        // https://github.com/vigna/MWCPRNG/blob/main/prngs/MWC128X_32.c
         let expected = [0xb266f102, 0x1249125a, 0xa26f262a, 0x5464e7be];
         for &e in &expected {
             assert_eq!(rng.next_u32(), e);

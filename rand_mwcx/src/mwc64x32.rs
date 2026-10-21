@@ -57,7 +57,8 @@ fn pow_mod(mut n: u64) -> u64 {
 /// lattice structure, which the scrambler X hides.
 ///
 /// The algorithm used here is translated from [the `MWC64X_32.c` reference
-/// source code](https://prng.di.unimi.it/MWC64X_32.c) by Sebastiano Vigna.
+/// source code](https://github.com/vigna/MWCPRNG/blob/main/prngs/MWC64X_32.c)
+/// by Sebastiano Vigna.
 #[derive(Debug, Clone, PartialEq, Eq)]
 #[cfg_attr(feature = "serde", derive(Serialize, Deserialize))]
 pub struct Mwc64X32 {
@@ -210,7 +211,7 @@ mod tests {
     fn reference() {
         let mut rng = Mwc64X32::from_seed(SEED);
         // These values were produced with the reference implementation:
-        // https://prng.di.unimi.it/MWC64X_32.c
+        // https://github.com/vigna/MWCPRNG/blob/main/prngs/MWC64X_32.c
         let expected = [
             0x89abcdee, 0x124c08f7, 0x1dd9f62f, 0xe3dcdf5f, 0x6aadea99, 0x3b18a0d9, 0x8a555e1f,
             0x46d69f8e, 0x9edf4569, 0x85ccb634,
@@ -223,7 +224,7 @@ mod tests {
     #[test]
     fn reference_jumps() {
         // These values were produced with the reference implementation:
-        // https://prng.di.unimi.it/MWC64X_32.c
+        // https://github.com/vigna/MWCPRNG/blob/main/prngs/MWC64X_32.c
         let jumped = |f: fn(&mut Mwc64X32)| {
             let mut rng = Mwc64X32::from_seed(SEED);
             f(&mut rng);
@@ -260,7 +261,7 @@ mod tests {
             }
         );
         // These values were produced with the reference implementation:
-        // https://prng.di.unimi.it/MWC64X_32.c
+        // https://github.com/vigna/MWCPRNG/blob/main/prngs/MWC64X_32.c
         let expected = [0x2feb6e94, 0x49cee5bb, 0x4cadd11c, 0x22088158];
         for &e in &expected {
             assert_eq!(rng.next_u32(), e);
