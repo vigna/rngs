@@ -1,10 +1,10 @@
 [package]
-name = "rand_mwc"
+name = "rand_mwcx"
 version = "0.1.0"
 authors = ["The Rand Project Developers"]
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/rust-random/rngs"
-documentation = "https://docs.rs/rand_mwc"
+documentation = "https://docs.rs/rand_mwcx"
 homepage = "https://rust-random.github.io/book"
 description = "Scrambled multiply-with-carry random number generators"
 keywords = ["random", "rng", "mwc"]

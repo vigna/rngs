@@ -27,10 +27,10 @@ const BASE: [u64; 2] = [MWC_A1, 0];
 /// the result is the digit xored with the carry, as in David Thomas's MWC64X
 /// generator. It is not suitable for cryptographic purposes, but it is very
 /// fast, as its only 128-bit operations are a multiplication and a sum; since
-/// the lag is one, however, each multiplication depends on the result of the
-/// previous step (in [`Mwc192X`](crate::Mwc192X), instead, the
-/// multiplications of consecutive steps are independent, which makes it even
-/// faster).
+/// the lag is one, however, each multiplication needs the result of the
+/// previous step, so the processor cannot overlap consecutive steps
+/// ([`Mwc192X`](crate::Mwc192X), which has lag two, is faster for this
+/// reason).
 ///
 /// The underlying generator simulates a multiplicative congruential generator
 /// with prime modulus *m* = 0xff6da236274e252e · 2^64 − 1 and multiplier
@@ -61,8 +61,8 @@ impl Mwc128X {
     /// parallel computations.
     ///
     /// ```
-    /// use rand_mwc::rand_core::SeedableRng;
-    /// use rand_mwc::Mwc128X;
+    /// use rand_mwcx::rand_core::SeedableRng;
+    /// use rand_mwcx::Mwc128X;
     ///
     /// let rng1 = Mwc128X::seed_from_u64(0);
     /// let mut rng2 = rng1.clone();

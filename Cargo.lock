@@ -236,7 +236,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rand_mwc"
+name = "rand_mwcx"
 version = "0.1.0"
 dependencies = [
  "postcard",

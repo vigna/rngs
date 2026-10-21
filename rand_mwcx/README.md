@@ -1,9 +1,9 @@
-# rand_mwc
+# rand_mwcx
 
 [![Test Status](https://github.com/rust-random/rngs/actions/workflows/test.yml/badge.svg?event=push)](https://github.com/rust-random/rngs/actions)
-[![Latest version](https://img.shields.io/crates/v/rand_mwc.svg)](https://crates.io/crates/rand_mwc)
+[![Latest version](https://img.shields.io/crates/v/rand_mwcx.svg)](https://crates.io/crates/rand_mwcx)
 [![Book](https://img.shields.io/badge/book-master-yellow.svg)](https://rust-random.github.io/book/)
-[![API](https://docs.rs/rand_mwc/badge.svg)](https://docs.rs/rand_mwc)
+[![API](https://docs.rs/rand_mwcx/badge.svg)](https://docs.rs/rand_mwcx)
 
 Rust implementation of the [scrambled multiply-with-carry](https://prng.di.unimi.it/)
 random number generators MWC128X, MWC192X, MWC64X/32, and MWC128X/32,
@@ -15,18 +15,18 @@ part of the [Rand project](https://github.com/rust-random/rand).
 
 Links:
 
--   [API documentation (docs.rs)](https://docs.rs/rand_mwc)
--   [Changelog](https://github.com/rust-random/rngs/blob/master/rand_mwc/CHANGELOG.md)
+-   [API documentation (docs.rs)](https://docs.rs/rand_mwcx)
+-   [Changelog](https://github.com/rust-random/rngs/blob/master/rand_mwcx/CHANGELOG.md)
 
 ## Crate Features
 
-`rand_mwc` is no_std compatible by default.
+`rand_mwcx` is no_std compatible by default.
 
 The `serde` feature includes implementations of `Serialize` and `Deserialize` for the included RNGs.
 
 ## License
 
-`rand_mwc` is distributed under the terms of both the MIT license and the
+`rand_mwcx` is distributed under the terms of both the MIT license and the
 Apache License (Version 2.0).
 
 See [LICENSE-APACHE](LICENSE-APACHE) and [LICENSE-MIT](LICENSE-MIT), and

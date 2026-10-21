@@ -21,16 +21,14 @@
 //!
 //! # 64-bit generators
 //! - [`Mwc192X`]: Recommended for all purposes. Excellent speed and a period
-//!   of approximately 2^191; since the lag is two, the multiplications of
-//!   consecutive steps are independent.
+//!   of approximately 2^191.
 //! - [`Mwc128X`]: An alternative to `Mwc192X` with a smaller state (128 bits)
 //!   and a period of approximately 2^127. It is slightly slower, as each
-//!   multiplication depends on the result of the previous step.
+//!   multiplication needs the result of the previous step.
 //!
 //! # 32-bit generators
 //! - [`Mwc128X32`]: Recommended for all purposes. Excellent speed and a period
-//!   of approximately 2^127; since the lag is three, the multiplications of
-//!   consecutive steps are independent.
+//!   of approximately 2^127.
 //! - [`Mwc64X32`]: An alternative to `Mwc128X32` with a smaller state (64 bits)
 //!   and a period of approximately 2^63, meant for environments in which
 //!   registers are scarce, such as GPUs.
@@ -49,7 +47,7 @@
 //!
 //! ```
 //! use rand_core::{SeedableRng, Rng};
-//! use rand_mwc::Mwc192X;
+//! use rand_mwcx::Mwc192X;
 //!
 //! let mut rng = Mwc192X::seed_from_u64(0);
 //! let x = rng.next_u64();

@@ -44,12 +44,12 @@ fn pow_mod(mut n: u64) -> u64 {
 /// the result is the digit xored with the carry. It is David Thomas's MWC64X
 /// generator with a different multiplier. It is not suitable for
 /// cryptographic purposes. Its only 64-bit operations are a multiplication
-/// and a sum, but, since the lag is one, each multiplication depends on the
-/// result of the previous step (in [`Mwc128X32`](crate::Mwc128X32), instead,
-/// the multiplications of consecutive steps are independent). It is meant for
-/// environments in which registers are scarce, such as GPUs: otherwise, use
-/// [`Mwc128X32`](crate::Mwc128X32), which has a larger period and is at least
-/// as fast.
+/// and a sum, but, since the lag is one, each multiplication needs the result
+/// of the previous step, so the processor cannot overlap consecutive steps (in
+/// [`Mwc128X32`](crate::Mwc128X32), which has lag three, it can). It is meant
+/// for environments in which registers are scarce, such as GPUs: otherwise,
+/// use [`Mwc128X32`](crate::Mwc128X32), which has a larger period and is at
+/// least as fast.
 ///
 /// The underlying generator simulates a multiplicative congruential generator
 /// with prime modulus *m* = 0xfff145f8 · 2^32 − 1 and multiplier
@@ -82,8 +82,8 @@ impl Mwc64X32 {
     /// parallel computations.
     ///
     /// ```
-    /// use rand_mwc::rand_core::SeedableRng;
-    /// use rand_mwc::Mwc64X32;
+    /// use rand_mwcx::rand_core::SeedableRng;
+    /// use rand_mwcx::Mwc64X32;
     ///
     /// let rng1 = Mwc64X32::seed_from_u64(0);
     /// let mut rng2 = rng1.clone();

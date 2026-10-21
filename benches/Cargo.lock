@@ -38,7 +38,7 @@ dependencies = [
  "rand_chacha",
  "rand_core",
  "rand_hc",
- "rand_mwc",
+ "rand_mwcx",
  "rand_sfc",
  "rand_xorshift",
  "rand_xoshiro",
@@ -360,7 +360,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rand_mwc"
+name = "rand_mwcx"
 version = "0.1.0"
 dependencies = [
  "rand_core",

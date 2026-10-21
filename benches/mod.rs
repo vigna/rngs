@@ -20,7 +20,7 @@ use rand_core::{Rng, SeedableRng};
 
 use rand_chacha::{ChaCha8Rng, ChaCha12Rng, ChaCha20Rng};
 use rand_hc::Hc128Rng;
-use rand_mwc::{Mwc64X32, Mwc128X, Mwc128X32, Mwc192X};
+use rand_mwcx::{Mwc64X32, Mwc128X, Mwc128X32, Mwc192X};
 use rand_sfc::{Sfc32, Sfc64};
 use rand_xorshift::XorShiftRng;
 use rand_xoshiro::{

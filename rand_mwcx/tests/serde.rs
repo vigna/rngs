@@ -1,7 +1,7 @@
 #![cfg(feature = "serde")]
 
 use rand_core::{Rng, SeedableRng};
-use rand_mwc::{Mwc64X32, Mwc128X, Mwc128X32, Mwc192X};
+use rand_mwcx::{Mwc64X32, Mwc128X, Mwc128X32, Mwc192X};
 
 macro_rules! serde_rng {
     ($rng:ident) => {

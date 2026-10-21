@@ -26,10 +26,10 @@ const BASE: [u64; 2] = [0, MWC_A3 as u64];
 /// lag three, and period approximately 2^127, whose output is scrambled by X:
 /// the result is the most recent digit xored with the carry, as in David
 /// Thomas's MWC64X generator. It is not suitable for cryptographic purposes,
-/// but it is very fast, as its only 64-bit operations are a multiplication
-/// and a sum, and, since the lag is three, the multiplications of consecutive
-/// steps are independent: the only dependency between consecutive steps is
-/// the propagation of the carry.
+/// but it is very fast: its only 64-bit operations are a multiplication and a
+/// sum, and, since the lag is three, each multiplication uses a digit computed
+/// three steps before, so the processor can overlap the multiplications of
+/// consecutive steps (only the carry must be passed from one step to the next).
 ///
 /// The underlying generator simulates a multiplicative congruential generator
 /// with prime modulus *m* = 0xffcccc66 · 2^96 − 1 and multiplier
@@ -81,8 +81,8 @@ impl Mwc128X32 {
     /// parallel computations.
     ///
     /// ```
-    /// use rand_mwc::rand_core::SeedableRng;
-    /// use rand_mwc::Mwc128X32;
+    /// use rand_mwcx::rand_core::SeedableRng;
+    /// use rand_mwcx::Mwc128X32;
     ///
     /// let rng1 = Mwc128X32::seed_from_u64(0);
     /// let mut rng2 = rng1.clone();
